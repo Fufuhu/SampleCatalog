@@ -8,3 +8,11 @@ services:
     tty: true
     image: nginx:latest
     stdin_open: true
+  tomcat:
+    labels:
+      io.rancher.container.hostname_override: container_name
+    ports:
+    - 28080:8080
+    tty: true
+    image: tomcat:latest
+    stdin_open: true
