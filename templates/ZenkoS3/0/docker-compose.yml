@@ -9,15 +9,13 @@ services:
     image: scality/s3server
     stdin_open: true
   loadbalancer:
-    labels:
-      io.rancher.container.hostname_override: container_name
+    labels: 
+      io.rancher.scheduler.global: 'true'
     ports:
-    - "80:80"
-    tty: true
-    image: zenko/loadbalancer
-    stdin_open: true
-    links:
-      - s3
-    environment:
-      LISTEN_PORT: 80
-      UPSTREAM_SERVER: s3:8000
+    - 80:80/tcp
+    image: rancher/lb-service-haproxy:v0.6.2
+    port_rules:
+      - protocol: tcp
+        service: s3
+        source_port: 80
+        target_port: 8000

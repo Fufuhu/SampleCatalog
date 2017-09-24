@@ -7,4 +7,10 @@ services:
   s3:
     scale: 1
   loadbalancer:
-    scale: 1
+    lb_config:
+      certs: []
+      config: |-
+        # vc-api/os-apiのtimeoutが1200sに設定しているのでそれに合わせる
+        defaults
+                timeout client 1300s
+                timeout server 1300s
