@@ -17,7 +17,7 @@ services:
       - s3
     ports:
       - 18080:80/tcp
-    image: rancher/lb-service-haproxy:v0.6.2
+    image: rancher/lb-service-haproxy:v0.7.9
     port_rules:
       - protocol: tcp
         service: s3
