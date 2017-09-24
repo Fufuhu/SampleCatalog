@@ -14,7 +14,7 @@ services:
     ports:
     - "80:80"
     tty: true
-    image: zenko/loadbalander
+    image: zenko/loadbalancer
     stdin_open: true
     links:
       - s3
