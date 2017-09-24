@@ -11,6 +11,8 @@ services:
   loadbalancer:
     labels: 
       io.rancher.scheduler.global: 'true'
+      io.rancher.container.create_agent: 'true'
+      io.rancher.container.agent.role: environment
     ports:
     - 80:80/tcp
     image: rancher/lb-service-haproxy:v0.6.2
