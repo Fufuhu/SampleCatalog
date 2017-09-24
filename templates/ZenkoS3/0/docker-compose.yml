@@ -4,7 +4,7 @@ services:
     labels:
       io.rancher.container.hostname_override: container_name
     ports:
-      - "8000"
+      - 8000
     tty: true
     image: scality/s3server
     stdin_open: true
@@ -12,14 +12,10 @@ services:
     labels: 
       io.rancher.scheduler.global: 'true'
       io.rancher.container.create_agent: 'true'
-      io.rancher.container.agent.role: environment
+      io.rancher.container.agent.role: 'environment'
+      io.rancher.lb_service.target: 'prefer-local'
     links:
       - s3
     ports:
-      - 18080:80/tcp
+      - 80
     image: rancher/lb-service-haproxy:v0.7.9
-    port_rules:
-      - protocol: tcp
-        service: s3
-        source_port: 80
-        target_port: 8000
