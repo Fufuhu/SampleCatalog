@@ -1,0 +1,23 @@
+version: '2'
+services:
+  s3:
+    labels:
+      io.rancher.container.hostname_override: container_name
+    ports:
+    - "8000"
+    tty: true
+    image: scality/s3server
+    stdin_open: true
+  loadbalancer:
+    labels:
+      io.rancher.container.hostname_override: container_name
+    ports:
+    - "80:80"
+    tty: true
+    image: zenko/loadbalander
+    stdin_open: true
+    links:
+      - s3
+    environment:
+      LISTEN_PORT: 80
+      UPSTREAM_SERVER: s3:8000

@@ -1,0 +1,4 @@
+name: Zenko S3
+description: "S3 compatible OSS implementation."
+version: v0.1
+category: "Cloud"

@@ -1,0 +1,10 @@
+version: '2'
+catalog:
+  name: "Nginx"
+  version: "v1.0"
+  description: "initialize"
+services:
+  s3:
+    scale: 1
+  loadbalancer:
+    scale: 1
